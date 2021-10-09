@@ -3,6 +3,8 @@ const time = document.getElementById('time'),
   greeting = document.getElementById('greeting'),
   name = document.getElementById('name'),
   focus = document.getElementById('focus');
+  email= document.getElementById('email');
+  mobile= document.getElementById('mobile');
 
 // Options
 const showAmPm = true;
@@ -48,7 +50,15 @@ function setBgGreet() {
     greeting.textContent = 'Good Afternoon, ';
   } else {
     // Evening
-    document.body.style.backgroundImage = "url('https://i.ibb.co/924T2Wv/night.jpg')";
+    var background =new Array(); 
+    background[0] = "https://i.ibb.co/7vDLJFb/morning.jpg";
+    background[1] = "https://i.ibb.co/3mThcXc/afternoon.jpg";
+    background[2] = "https://i.ibb.co/924T2Wv/night.jpg";
+    background[3] = "https://www.enwallpaper.com/wp-content/uploads/965f83a29f6051fe4e97c6b209d06f96.jpg";
+    var numberGen =Math.floor(Math.random()*4);
+
+
+    document.body.style.backgroundImage = 'url('+ background[numberGen]+')';
     greeting.textContent = 'Good Evening, ';
     document.body.style.color = 'white';
   }
@@ -56,8 +66,8 @@ function setBgGreet() {
 
 // Get Name
 function getName() {
-  if (localStorage.getItem('name') === null) {
-    name.textContent = '[Enter Name]';
+  if (localStorage.getItem('name') === null || !localStorage.getItem('name')) {
+    document.getElementById('name').placeholder = ' Enter Your Name';
   } else {
     name.textContent = localStorage.getItem('name');
   }
@@ -78,8 +88,8 @@ function setName(e) {
 
 // Get Focus
 function getFocus() {
-  if (localStorage.getItem('focus') === null) {
-    focus.textContent = '[Enter Focus]';
+  if (localStorage.getItem('focus') === null || !localStorage.getItem('focus')) {
+    focus.placeholder = 'Enter Focus';
   } else {
     focus.textContent = localStorage.getItem('focus');
   }
@@ -98,13 +108,60 @@ function setFocus(e) {
   }
 }
 
+function getEmail() {
+  if (localStorage.getItem('email') !== null ) {
+    
+    email.textContent = localStorage.getItem('focus');
+  } 
+}
+
+// Set Email
+function setEmail(e) {
+  if (e.type === 'keypress') {
+    // Make sure enter is pressed
+    if (e.which == 13 || e.keyCode == 13) {
+      localStorage.setItem('email', e.target.innerText);
+      email.blur();
+    }
+  } else {
+    localStorage.setItem('email', e.target.innerText);
+  }
+}
+
+
+function getMobile() {
+  if (localStorage.getItem('mobile') !== null ) {
+    
+    email.textContent = localStorage.getItem('mobile');
+  } 
+}
+
+// Set Mobile
+function setMobile(e) {
+  if (e.type === 'keypress') {
+    // Make sure enter is pressed
+    if (e.which == 13 || e.keyCode == 13) {
+      localStorage.setItem('mobile', e.target.innerText);
+      mobile.blur();
+    }
+  } else {
+    localStorage.setItem('mobile', e.target.innerText);
+  }
+}
+
 name.addEventListener('keypress', setName);
 name.addEventListener('blur', setName);
 focus.addEventListener('keypress', setFocus);
 focus.addEventListener('blur', setFocus);
+mobile.addEventListener('keypress', setMobile);
+mobile.addEventListener('blur', setMobile);
+email.addEventListener('keypress', setEmail);
+email.addEventListener('blur', setEmail);
 
 // Run
 showTime();
 setBgGreet();
 getName();
 getFocus();
+getEmail();
+getMobile();
