@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8"/>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <meta http-equiv="X-UA-Compatible" content="ie=edge"/>
-    <title>Landing Page</title>
-    <link rel="stylesheet" href="./style.css">
-    
-  </head>
-  <body>
 
-<time id="time"></time>
-    <h1>
-      <span id="greeting"></span>
-      <input id="name" contenteditable="true"/>
-    </h1>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Jungle Organics</title>
+  <link rel="stylesheet" href="./style.css">
+  
 
-    <h2>What Is Your Focus For Today?</h2>
-    <input id="focus" contenteditable="true" />
+</head>
 
-    <form>
+<body>
 
+  <time id="time"></time>
+  <h1>
+    <span id="greeting"></span>
+    <input id="name" class="gray" contenteditable="true" />
+  </h1>
+
+  <h2>What Is Your Focus For Today?</h2>
+  <input id="focus" class="gray" contenteditable="true" placeholder="Enter Your Focus" />
+
+  
+  <div class="h2">
+    <h2>Let's Connect</h2>
+    <input id="email" class="gray" contenteditable="true" placeholder= "Enter your mail id"/>
+    <input id="mobile" class="gray" contenteditable="true" placeholder="Enter your mobile number" />
+  </div>
+  <br>
+
+
+ <button type="submit" value="Go to Website" onclick="sendmail()" class="button"><span>Go to Website</span></button>
+ 
    
-    <div class="h2">
-      <h2>Let's Connect</h2>
-      <input id="email" contenteditable="true" placeholder="Enter your mail id"  />
-      <input id="mobile" contenteditable="true" placeholder="Enter your mobile number"/>
-      
-    </div>
-<input type="submit">
-  </form>
-    <script type="text/javascript" src="./style.js"></script>
-  </body>
 
-    </html>
+  <script type="text/javascript" src="./style.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
+<script src="https://smtpjs.com/v3/smtp.js"></script>
+
+</body>
+
+
+</html>
